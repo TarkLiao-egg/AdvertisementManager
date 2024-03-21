@@ -1,0 +1,23 @@
+PODS:
+  - AppLovinSDK (12.3.1)
+  - TAdManager_iOS (1.0.0)
+
+DEPENDENCIES:
+  - AppLovinSDK (= 12.3.1)
+  - TAdManager_iOS (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - AppLovinSDK
+
+EXTERNAL SOURCES:
+  TAdManager_iOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AppLovinSDK: d99a5a32b00e844932f4583f863780e1af835722
+  TAdManager_iOS: 6741118e7b9c198a5d68b42d9475b973f8cbd2c7
+
+PODFILE CHECKSUM: 7cc2b8ad222df3b6c6ecb11a8e7839b757bff08d
+
+COCOAPODS: 1.15.2
