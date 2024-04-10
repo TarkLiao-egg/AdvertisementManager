@@ -5,7 +5,7 @@ public protocol AdFeatureLogic {
     func getSource(adLocation: WHAdLocation) -> WHAdSource
     func getUnitIDs(source: WHAdSource, adLocation: WHAdLocation) -> [String]
     func logLoadAd(adLocation: WHAdLocation)
-    func logShouldShowAd(adLocation: WHAdLocation)
+    func logShouldShowAd(adLocation: WHAdLocation, logParam: Any?)
     func logShowAd(adLocation: WHAdLocation, logParam: Any?)
     func logReward(adLocation: WHAdLocation, logParam: Any?)
     func logClickAd(adLocation: WHAdLocation, logParam: Any?)

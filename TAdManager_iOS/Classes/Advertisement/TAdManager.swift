@@ -148,7 +148,7 @@ extension TAdManager {
         }
         
         if let _ = playCompletion {
-            adFeaturelogic.logShouldShowAd(adLocation: adLocation)
+            adFeaturelogic.logShouldShowAd(adLocation: adLocation, logParam: logParam)
         }
         
         let taskStatus = adFeaturelogic.getAdTaskStatus(whAdTask: whAdTask, isPlay: playCompletion != nil)
