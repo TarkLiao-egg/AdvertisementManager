@@ -50,6 +50,11 @@ class AdFeatureLogic_10: AdFeatureLogic {
         }
     }
     
+    func logShouldShowAd(adLocation: WHAdLocation) {
+        let adStyle = getAdStyle(adLocation: adLocation)
+        let adLocation = TestAdLocation.AdLocation(rawValue: adLocation.adLocationStr)
+    }
+    
     func logShowAd(adLocation: WHAdLocation, logParam: Any?) {
         let adStyle = getAdStyle(adLocation: adLocation)
         let adLocation = TestAdLocation.AdLocation(rawValue: adLocation.adLocationStr)

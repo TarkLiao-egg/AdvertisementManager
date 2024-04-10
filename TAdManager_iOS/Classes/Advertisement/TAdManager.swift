@@ -147,6 +147,10 @@ extension TAdManager {
         default: break
         }
         
+        if let _ = playCompletion {
+            adFeaturelogic.logShouldShowAd(adLocation: adLocation)
+        }
+        
         let taskStatus = adFeaturelogic.getAdTaskStatus(whAdTask: whAdTask, isPlay: playCompletion != nil)
         switch taskStatus {
         case .existAdAndPlay: // 如果有實作play且存在廣告則會立即回傳，回傳完再預加載
