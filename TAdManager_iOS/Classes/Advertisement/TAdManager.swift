@@ -119,7 +119,10 @@ extension TAdManager {
                 optionDic[.refreshBannerWeak(nil, nil)] = refreshObj
                 
             case .bindWeak(let bindTargetWeak):
-                let bindTargetWeak = WHBindObject(bindTargetWeak: bindTargetWeak)
+                let bindTargetWeak = WHBindObject(bindTargetWeak)
+                optionDic[.bindWeak(nil)] = bindTargetWeak
+                
+            case .realBindWeak(let bindTargetWeak):
                 optionDic[.bindWeak(nil)] = bindTargetWeak
                 
             case .loadTimeForceQuit(let time):
@@ -194,6 +197,19 @@ extension TAdManager {
         case .prepare: // 如果沒實作play，就預加載
             whAdTask.fillAllAd(optionDic: optionDic)
         }
+    }
+    
+    public static func getHandleAdOption(_ adOptions: [WHAdOption]) -> [WHAdOption] {
+        var newOptions = [WHAdOption]()
+        for adOption in adOptions {
+            switch adOption {
+            case .bindWeak(let weakSelf):
+                newOptions.append(.realBindWeak(WHBindObject(weakSelf)))
+            default:
+                newOptions.append(adOption)
+            }
+        }
+        return newOptions
     }
 }
 

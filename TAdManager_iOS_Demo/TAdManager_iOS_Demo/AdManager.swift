@@ -26,7 +26,7 @@ class AdManager {
     
     static func loadAd(isSubscribe: Bool? = nil, adLocation: WHAdLocation, logParam: Any? = nil, beforeAction: (() -> Void)? = nil, specialCondition: (() -> Bool)? = nil, adOptions: [WHAdOption] = [], playCompletion: ((WHAdResult) -> ())? = nil) {
         if shared.isReady == false {
-            shared.ads.append((isSubscribe: isSubscribe, adLocation: adLocation, logParam: logParam, beforeAction: beforeAction, specialCondition: specialCondition, adOptions: adOptions, playCompletion: playCompletion))
+            shared.ads.append((isSubscribe: isSubscribe, adLocation: adLocation, logParam: logParam, beforeAction: beforeAction, specialCondition: specialCondition, adOptions: TAdManager.getHandleAdOption(adOptions), playCompletion: playCompletion))
             return
         }
         TAdManager.shared.loadAd(isSubscribe: false, adLocation: adLocation, logParam: logParam, beforeAction: beforeAction, specialCondition: specialCondition, adOptions: adOptions, playCompletion: playCompletion)

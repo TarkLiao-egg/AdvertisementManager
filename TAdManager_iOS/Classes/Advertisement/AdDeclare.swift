@@ -55,6 +55,7 @@ public enum WHAdSourceResult {
 public enum WHAdOption: Equatable, Hashable {
     case refreshBannerWeak(NSObject?, Bool?) // Refresh需綁定物件，該物件消失就停止, Bool設置true就是以remoteConfig時間做refresh，如果是false就是看廣告本身更新
     case bindWeak(NSObject?) // 綁定物件，該物件消失就不播廣告
+    case realBindWeak(WHBindObject?) // library使用
     case requiredAdExist // 廣告必須存在才播，不然就結束
     case loadTimeForceQuit(Int) // 幾秒就結束load Ad
     case stopReloadAd // Ad not reload
@@ -71,10 +72,18 @@ class WHRefreshObject {
     }
 }
 
-class WHBindObject {
-    weak var bindTargetWeak: NSObject?
-    init(bindTargetWeak: NSObject?) {
+public class WHBindObject: Equatable, Hashable {
+    public weak var bindTargetWeak: NSObject?
+    init(_ bindTargetWeak: NSObject?) {
         self.bindTargetWeak = bindTargetWeak
+    }
+    
+    public static func == (lhs: WHBindObject, rhs: WHBindObject) -> Bool {
+        return lhs.bindTargetWeak == rhs.bindTargetWeak
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(bindTargetWeak)
     }
 }
 
