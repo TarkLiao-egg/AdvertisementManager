@@ -9,6 +9,7 @@ public protocol AdFeatureLogic {
     func logShowAd(adLocation: WHAdLocation, logParam: Any?)
     func logReward(adLocation: WHAdLocation, logParam: Any?)
     func logClickAd(adLocation: WHAdLocation, logParam: Any?)
+    func logFullScreenAdEnd(adLocation: WHAdLocation, logParam: Any?)
     func getAdStyle(adLocation: WHAdLocation) -> WHAdStyle
     func renderAdToAdView(adLocation: WHAdLocation, loader: Any?, ad: Any?) -> UIView?
 }
