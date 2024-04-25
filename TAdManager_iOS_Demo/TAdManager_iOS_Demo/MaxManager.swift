@@ -207,6 +207,9 @@ extension MaxManager: MAAdDelegate {
             sourceResult?(.canReload)
             sourceResult?(.doReload)
         }
+        if adStyle == .interstitial {
+            sourceResult?(.adEnd)
+        }
     }
     
     func didClick(_ ad: MAAd) {
@@ -225,6 +228,7 @@ extension MaxManager: MAAdDelegate {
 extension MaxManager: MARewardedAdDelegate { // MARK: reward
     func didRewardUser(for ad: MAAd, with reward: MAReward) {
         getRewarded?()
+        sourceResult?(.adEnd)
     }
     
 }
