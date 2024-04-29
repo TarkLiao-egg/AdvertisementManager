@@ -16,6 +16,7 @@ class MaxManager: NSObject, WHAdSource {
     var retryCount: Int = 0
     var adStyle: WHAdStyle = .interstitial
     var waitingRevenue = false
+    var getReward: Bool = false
     
     static func initial(isFirst: Bool = false, completion: @escaping () -> Void) {
         if isFirst {
@@ -203,12 +204,14 @@ extension MaxManager: MAAdDelegate {
     func didHide(_ ad: MAAd) {
         isPlay = false
         print(#function)
+        if adStyle == .interstitial {
+            sourceResult?(.adEnd(isReward: nil))
+        } else if adStyle == .reward {
+            sourceResult?(.adEnd(isReward: getReward))
+        }
         if reloadWhenHide {
             sourceResult?(.canReload)
             sourceResult?(.doReload)
-        }
-        if adStyle == .interstitial {
-            sourceResult?(.adEnd)
         }
     }
     
@@ -228,7 +231,7 @@ extension MaxManager: MAAdDelegate {
 extension MaxManager: MARewardedAdDelegate { // MARK: reward
     func didRewardUser(for ad: MAAd, with reward: MAReward) {
         getRewarded?()
-        sourceResult?(.adEnd)
+        getReward = true
     }
     
 }

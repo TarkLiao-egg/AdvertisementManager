@@ -50,7 +50,7 @@ public enum WHAdSourceResult {
     case canReload
     case doReload
     case click
-    case adEnd
+    case adEnd(isReward: Bool?)
 }
 
 public enum WHAdOption: Equatable, Hashable {

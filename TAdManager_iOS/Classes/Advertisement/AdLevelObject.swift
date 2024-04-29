@@ -96,8 +96,8 @@ class AdLevelObject {
             sourceLoadAd()
         case .click:
             adFeatureLogic?.logClickAd(adLocation: adLocation, logParam: logParam)
-        case .adEnd:
-            adFeatureLogic?.logFullScreenAdEnd(adLocation: adLocation, logParam: logParam)
+        case .adEnd(let isReward):
+            adFeatureLogic?.logFullScreenAdEnd(adLocation: adLocation, isReward: isReward, logParam: logParam)
         }
         adSourceResultAction?(result, adLocation, level)
     }

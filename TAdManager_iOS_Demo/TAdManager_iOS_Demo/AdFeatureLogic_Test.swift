@@ -71,7 +71,7 @@ class AdFeatureLogic_10: AdFeatureLogic {
         let adLocation = TestAdLocation.AdLocation(rawValue: adLocation.adLocationStr)
     }
     
-    func logFullScreenAdEnd(adLocation: WHAdLocation, logParam: Any?) {
+    func logFullScreenAdEnd(adLocation: WHAdLocation, isReward: Bool?, logParam: Any?) {
         let adLocation = TestAdLocation.AdLocation(rawValue: adLocation.adLocationStr)
     }
     
